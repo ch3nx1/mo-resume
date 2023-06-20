@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { locale } = useI18n()
-const language = ref<Boolean>()
+const language = ref<boolean>()
 // change language
 watch(
   language,
@@ -22,16 +22,15 @@ watch(
         <a
           class="btn btn-ghost normal-case text-xl"
           href="/"
-          >{{ $t('title') }}</a
-        >
+        >{{ $t('title') }}</a>
       </div>
       <div class="flex-none">
         <div class="flex items-center justify-center">
           <label class="swap btn btn-ghost mr-1 btn-text">
             <input
-              type="checkbox"
               v-model="language"
-            />
+              type="checkbox"
+            >
 
             <div class="swap-on">English</div>
             <div class="swap-off">简体中文</div>
@@ -43,7 +42,7 @@ watch(
                 type="checkbox"
                 data-toggle-theme="night,cmyk"
                 data-act-class="night"
-              />
+              >
 
               <!-- sun icon -->
               <svg
@@ -71,8 +70,9 @@ watch(
           <nuxt-link
             class="btn btn-primary btn-outline normal-case text-base"
             to="/resume/my"
-            >{{ $t('getStarted') }}</nuxt-link
           >
+            {{ $t('getStarted') }}
+          </nuxt-link>
         </div>
       </div>
     </div>

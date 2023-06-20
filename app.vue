@@ -8,6 +8,8 @@ onMounted(() => {
   <AppHeader />
   <div class="container mx-auto px-6">
     <NuxtPage />
-    <nuxt-link to="/main">我的简历</nuxt-link>
+    <nuxt-link to="/main">
+      我的简历
+    </nuxt-link>
   </div>
 </template>

@@ -8,13 +8,13 @@ export default {
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
-    './app.vue',
+    './app.vue'
   ],
   theme: {
-    extend: {},
+    extend: {}
   },
   plugins: [DaisyUi],
   daisyui: {
-    themes: ['cmyk', 'night', 'wireframe'],
-  },
+    themes: ['cmyk', 'night', 'wireframe']
+  }
 }

@@ -1,3 +1,5 @@
 <template>
-  <div class="btn">hello</div>
+  <div class="btn">
+    hello
+  </div>
 </template>
