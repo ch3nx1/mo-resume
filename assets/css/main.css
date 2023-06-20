@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  /* normal-case */
+  .btn-text {
+    text-transform: none;
+  }
+}
