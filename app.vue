@@ -6,7 +6,4 @@ onMounted(() => {
 </script>
 <template>
   <NuxtPage />
-  <nuxt-link to="/main">
-    我的简历
-  </nuxt-link>
 </template>

@@ -13,7 +13,7 @@ export default defineI18nConfig(() => ({
       title: '模-简历',
       description: '轻松创建你的简历',
       getStarted: '快速开始',
-      slogan: '免费打造你的专业简历',
+      slogan: '使用模板轻松创建简历',
       createResume: '创建简历'
     }
   }
