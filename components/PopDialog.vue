@@ -12,6 +12,7 @@ const el = ref<HTMLElement>()
 const content = ref<HTMLElement>()
 /** 关闭按钮实例 */
 const closeBtn = ref<HTMLElement>()
+const cancelBtn = ref<HTMLElement>()
 /** 配合使用transition组件 需控制弹出框内容的显示 */
 const showContent = ref<boolean>(false)
 /** 定时器类型 */
@@ -72,7 +73,11 @@ const setVariable = (x: string, y: string) => {
  */
 const close = (e: MouseEvent) => {
   // 点击遮罩层和关闭按钮关闭弹窗,防止点击content时关闭
-  if (e.target === el.value || e.target === closeBtn.value) {
+  if (
+    e.target === el.value ||
+    e.target === closeBtn.value ||
+    e.target === cancelBtn.value
+  ) {
     emit('update:modelValue', false)
   }
 }
@@ -93,23 +98,31 @@ const close = (e: MouseEvent) => {
           class="flex flex-col justify-between rounded-sm bg-white max-h-[90vh] text-black w-1/2"
         >
           <header class="relative px-4 py-3 border-b">
-            <h2 class="text-lg text-center">填写个人信息</h2>
+            <h2 class="text-lg text-center font-bold">
+              <slot name="title"></slot>
+            </h2>
             <!-- 阻止事件冒泡.stop -->
             <span
               ref="closeBtn"
-              class="btn btn-ghost absolute top-1 right-1"
+              class="btn btn-ghost absolute top-1 right-1 text-base"
               @click.stop="close"
               >X</span
             >
           </header>
-          <div
-            class="dialog-body"
-            title="插槽占用区域-弹框内容主要区域"
-          >
+          <div class="dialog-body">
             <slot></slot>
           </div>
-          <footer title="弹框底部区域">
-            <slot name="footer"></slot>
+          <footer class="flex justify-end p-4">
+            <button
+              ref="cancelBtn"
+              class="btn btn-ghost mr-3 capitalize"
+              @click="close"
+            >
+              {{ $t('cancel') }}
+            </button>
+            <button class="btn btn-primary capitalize">
+              {{ $t('save') }}
+            </button>
           </footer>
         </div>
       </transition>

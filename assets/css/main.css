@@ -3,6 +3,8 @@
 @tailwind utilities;
 @layer utilities {
   /* normal-case */
+
+  /* 关闭daisyUI按钮字母大写 */
   .btn-text {
     text-transform: none;
   }
