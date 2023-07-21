@@ -40,7 +40,8 @@
     "nuxt-icons": "^3.2.1",
     "pinia": "^2.1.4",
     "quasar": "^2.12.3",
-    "theme-change": "^2.5.0"
+    "theme-change": "^2.5.0",
+    "vuedraggable": "^4.1.0"
   },
   "lint-staged": {
     ".{js,ts,vue}": [

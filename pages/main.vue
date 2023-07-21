@@ -1,5 +1,3 @@
 <template>
-  <div class="btn">
-    hello
-  </div>
+  <simple-draggable></simple-draggable>
 </template>
