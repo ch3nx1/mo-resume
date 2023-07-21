@@ -1,0 +1,3 @@
+<template>
+  <FormCollapse></FormCollapse>
+</template>

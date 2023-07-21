@@ -10,7 +10,7 @@ const componentsName: ConcreteComponent = { simple, AppHeader }
 <template>
   <div
     id="resume-container"
-    class="mx-auto w-[800px] pb-16 bg-white"
+    class="mx-auto w-[800px] pb-16 bg-white card card-compact shadow-md rounded-sm"
   >
     <component :is="componentsName[current]" />
   </div>

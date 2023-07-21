@@ -8,3 +8,8 @@ export interface UserInfo {
   workY: string
   location: string
 }
+export interface Skill {
+  title: string
+  description: Array
+  show?: boolean
+}

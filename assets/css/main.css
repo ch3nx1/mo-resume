@@ -1,11 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+  h3{
+    @apply text-base font-medium;
+  }
+}
 @layer utilities {
   /* normal-case */
 
   /* 关闭daisyUI按钮字母大写 */
   .btn-text {
     text-transform: none;
+  }
+
+}
+@layer components{
+  /* 修改分割线的高度为0.5px */
+  .divider{
+    &:before {
+      @apply h-[0.5px] w-full;
+    }
+    &:after {
+      @apply h-[0.5px] w-full;
+    }
   }
 }

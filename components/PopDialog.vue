@@ -97,7 +97,7 @@ const close = (e: MouseEvent) => {
           ref="content"
           class="flex flex-col justify-between rounded-sm bg-white max-h-[90vh] text-black w-1/2"
         >
-          <header class="relative px-4 py-3 border-b">
+          <header class="relative px-4 py-3 border-b mb-3">
             <h2 class="text-lg text-center font-bold">
               <slot name="title"></slot>
             </h2>

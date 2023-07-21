@@ -21,7 +21,10 @@ export default defineI18nConfig(() => ({
       wechat: 'WeChat',
       birth: 'Date of Birth',
       workY: 'Working years',
-      location: 'Location'
+      location: 'Location',
+      skill: 'Skills',
+      add: 'Add',
+      delete: 'Delete'
     },
     cn: {
       title: '模-简历',
@@ -42,7 +45,10 @@ export default defineI18nConfig(() => ({
       wechat: '微信号',
       birth: '出生日期',
       workY: '工作年限',
-      location: '所在位置'
+      location: '所在位置',
+      skill: '专业技能',
+      add: '添加',
+      delete: '删除'
     }
   }
 }))
