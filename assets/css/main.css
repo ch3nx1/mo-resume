@@ -14,7 +14,14 @@
   .btn-text {
     text-transform: none;
   }
-
+  /* Resolve Quasar and Tailwind CSS conflicts 
+  Quasar: flex
+  .flex{ display: flex; flex-wrap: wrap }
+  */
+  .flex{
+    display: flex;
+    flex-wrap: nowrap;
+  }
 }
 @layer components{
   /* 修改分割线的高度为0.5px */
