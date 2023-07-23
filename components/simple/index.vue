@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 
-const SimpleHeader = resolveComponent('SimpleHeader')
-const SimpleSkills = resolveComponent('SimpleSkills')
-
+const SimpleHeader = shallowRef(resolveComponent('SimpleHeader'))
+const SimpleSkills = shallowRef(resolveComponent('SimpleSkills'))
 const componentsList = ref<Array<object>>([
   { id: 0, name: SimpleHeader },
   { id: 1, name: SimpleSkills }
