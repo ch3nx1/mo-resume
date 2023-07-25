@@ -1,8 +1,8 @@
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: 'cn',
+  locale: 'zh-CN',
   messages: {
-    en: {
+    'en-US': {
       title: 'Mo-resume',
       description: 'Create your resume easily',
       getStarted: 'Get Started',
@@ -24,9 +24,16 @@ export default defineI18nConfig(() => ({
       location: 'Location',
       skill: 'Skills',
       add: 'Add',
-      delete: 'Delete'
+      delete: 'Delete',
+      education: 'Education',
+      school: 'School',
+      degree: 'Degree',
+      major: 'Field of Study',
+      start: 'Start',
+      end: 'End',
+      detail: 'Detail'
     },
-    cn: {
+    'zh-CN': {
       title: '模-简历',
       description: '轻松创建你的简历',
       getStarted: '快速开始',
@@ -48,7 +55,14 @@ export default defineI18nConfig(() => ({
       location: '所在位置',
       skill: '专业技能',
       add: '添加',
-      delete: '删除'
+      delete: '删除',
+      education: '教育经历',
+      school: '学校名称',
+      degree: '学历',
+      major: '专业',
+      start: '开始时间',
+      end: '结束时间',
+      detail: '描述'
     }
   }
 }))

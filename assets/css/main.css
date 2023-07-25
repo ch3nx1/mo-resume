@@ -25,12 +25,11 @@
 }
 @layer components{
   /* 修改分割线的高度为0.5px */
-  .divider{
-    &:before {
+  .divider:before {
       @apply h-[0.5px] w-full;
     }
-    &:after {
+  .divider:after {
       @apply h-[0.5px] w-full;
     }
-  }
+  
 }

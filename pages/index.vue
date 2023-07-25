@@ -4,7 +4,7 @@
   <AppHeader>
     <template #right>
       <nuxt-link
-        class="btn btn-primary btn-outline normal-case text-base"
+        class="btn btn-primary btn-outline normal-case text-base w-[123px]"
         to="/templates"
       >
         {{ $t('getStarted') }}

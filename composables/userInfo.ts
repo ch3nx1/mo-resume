@@ -33,6 +33,13 @@ export const useUser = defineStore('userInfo', () => {
   ])
   const deleteSkill = (i: number) => {
     skills.value.splice(i, 1)
+    if (skills.value.length < 1) {
+      skills.value.push({
+        title: '',
+        description: [],
+        show: true
+      })
+    }
   }
   const addSkill = (i: number) => {
     skills.value.splice(i + 1, 0, {

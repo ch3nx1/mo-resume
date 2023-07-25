@@ -3,9 +3,12 @@ import draggable from 'vuedraggable'
 
 const SimpleHeader = shallowRef(resolveComponent('SimpleHeader'))
 const SimpleSkills = shallowRef(resolveComponent('SimpleSkills'))
+const SimpleEducation = shallowRef(resolveComponent('SimpleEducation'))
+// ref 不会深度代理shallowRef的对象
 const componentsList = ref<Array<object>>([
   { id: 0, name: SimpleHeader },
-  { id: 1, name: SimpleSkills }
+  { id: 1, name: SimpleSkills },
+  { id: 2, name: SimpleEducation }
 ])
 </script>
 

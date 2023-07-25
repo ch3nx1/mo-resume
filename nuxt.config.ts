@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
@@ -15,6 +16,7 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './i18n.config.ts' // if you are using custom path, default
   },
+  quasar: { lang: 'zh-CN' },
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {

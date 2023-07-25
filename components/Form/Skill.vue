@@ -72,14 +72,14 @@ const onShow = (e: MouseEvent, skill: Skill, index: number) => {
         <aside class="title relative">
           <!-- 输入框跟随内容变化宽度 -->
           <span
-            class="inline-block w-full h-0 invisible px-2 overflow-hidden"
+            class="inline-block text-lg w-full h-0 invisible px-2 overflow-hidden"
             >{{ skill.title }}</span
           >
           <input
             ref="title"
             v-model="skill.title"
             type="text"
-            class="font-medium absolute top-0 left-0 border-b border-solid border-gray-300 indent-1 w-full min-w-[125px]"
+            class="font-medium text-lg absolute top-0 left-0 border-b border-solid border-gray-300 indent-1 w-full min-w-[125px]"
           />
         </aside>
 
@@ -95,6 +95,16 @@ const onShow = (e: MouseEvent, skill: Skill, index: number) => {
         </aside>
       </div>
     </form-operable>
+    <button
+      v-show="skill.show && index === active && skill.description.length === 0"
+      class="px-7"
+    >
+      <nuxt-icon
+        name="add"
+        class="font-medium text-2xl text-center"
+        @click="addDescription(titleIndex, -1)"
+      ></nuxt-icon>
+    </button>
     <form-operable
       v-for="(item, itemIndex) in skill.description"
       v-show="skill.show && index === active"
@@ -105,7 +115,7 @@ const onShow = (e: MouseEvent, skill: Skill, index: number) => {
         ref="itemInput"
         v-model="item.content"
         type="text"
-        class="border-[1px] border-gray-200 rounded w-full indent-1"
+        class="border-[1px] text-base border-gray-200 rounded w-full indent-1"
         @click.right="getItemIndex(itemIndex)"
       />
     </form-operable>

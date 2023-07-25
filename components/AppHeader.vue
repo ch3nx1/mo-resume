@@ -6,9 +6,9 @@ watch(
   language,
   (language) => {
     if (language) {
-      locale.value = 'en'
+      locale.value = 'en-US'
     } else {
-      locale.value = 'cn'
+      locale.value = 'zh-CN'
     }
   },
   { immediate: true }
@@ -33,8 +33,20 @@ watch(
               type="checkbox"
             />
 
-            <div class="swap-on">English</div>
-            <div class="swap-off">简体中文</div>
+            <div class="swap-on flex justify-between">
+              <nuxt-icon
+                name="language"
+                class="text-base inline-block text-center pr-1"
+              />
+              <span>English</span>
+            </div>
+            <div class="swap-off flex justify-between">
+              <nuxt-icon
+                name="language"
+                class="text-base inline-block text-center pr-1"
+              />
+              <span>简体中文</span>
+            </div>
           </label>
           <div class="btn btn-ghost mr-1">
             <label class="swap swap-rotate flex-auto">
