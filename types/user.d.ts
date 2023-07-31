@@ -22,3 +22,12 @@ export interface Education {
   detail: Array
   show?: boolean
 }
+export interface Work {
+  company: string
+  position: string
+  city: string
+  start: string
+  end: string
+  detail: string
+  show?: boolean
+}

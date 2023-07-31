@@ -31,7 +31,10 @@ export default defineI18nConfig(() => ({
       major: 'Field of Study',
       start: 'Start',
       end: 'End',
-      detail: 'Detail'
+      detail: 'Detail',
+      work: 'Work Experiences',
+      company: 'Company',
+      position: 'Position'
     },
     'zh-CN': {
       title: '模-简历',
@@ -62,7 +65,10 @@ export default defineI18nConfig(() => ({
       major: '专业',
       start: '开始时间',
       end: '结束时间',
-      detail: '描述'
+      detail: '描述',
+      work: '工作经历',
+      company: '公司名称',
+      position: '职位名称'
     }
   }
 }))

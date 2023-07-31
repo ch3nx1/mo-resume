@@ -26,8 +26,7 @@ const showDialog = ref<boolean>(false)
           ><span class="text-gray-400">{{ education.major }}</span>
         </div>
         <div>
-          <span>{{ education.start }}</span
-          >-<span>{{ education.end }}</span>
+          <span>{{ education.start }}</span> - <span>{{ education.end }}</span>
         </div>
       </div>
       <div class="p-3">
