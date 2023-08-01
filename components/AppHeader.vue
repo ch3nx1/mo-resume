@@ -1,5 +1,23 @@
 <script setup lang="ts">
+import { QuasarLanguage } from 'quasar'
+
 const { locale } = useI18n()
+const { lang } = useQuasar()
+
+watch(locale, async (newLocale) => {
+  const pkg = await getLanguagePack(newLocale)
+  lang.set(pkg)
+})
+
+async function getLanguagePack(lang: string): Promise<QuasarLanguage> {
+  switch (lang) {
+    case 'zh-CN':
+      return (await import(`quasar/lang/zh-CN.mjs`)).default
+    default: // fallback
+      return (await import(`quasar/lang/en-US.mjs`)).default
+  }
+}
+
 const language = ref<boolean>()
 // change language
 watch(
