@@ -26,16 +26,28 @@ export const useWork = defineStore('workExperiences', () => {
       })
     }
   }
-  const addWork = (i: number) => {
-    workExperiences.value.splice(i + 1, 0, {
-      company: '',
-      detail: '',
-      position: '',
-      start: '',
-      end: '',
-      city: '',
-      show: true
-    })
+  const addWork = (i?: number) => {
+    if (i === undefined) {
+      workExperiences.value.push({
+        company: '',
+        detail: '',
+        position: '',
+        start: '',
+        end: '',
+        city: '',
+        show: false
+      })
+    } else {
+      workExperiences.value.splice(i + 1, 0, {
+        company: '',
+        detail: '',
+        position: '',
+        start: '',
+        end: '',
+        city: '',
+        show: true
+      })
+    }
   }
   return {
     workExperiences,

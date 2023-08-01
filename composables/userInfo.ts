@@ -41,12 +41,20 @@ export const useUser = defineStore('userInfo', () => {
       })
     }
   }
-  const addSkill = (i: number) => {
-    skills.value.splice(i + 1, 0, {
-      title: '',
-      description: [{ content: '' }],
-      show: false
-    })
+  const addSkill = (i?: number) => {
+    if (i === undefined) {
+      skills.value.push({
+        title: '',
+        description: [],
+        show: false
+      })
+    } else {
+      skills.value.splice(i + 1, 0, {
+        title: '',
+        description: [{ content: '' }],
+        show: false
+      })
+    }
   }
   const deleteDescription = (i: number, descI: number) => {
     skills.value[i].description.splice(descI, 1)

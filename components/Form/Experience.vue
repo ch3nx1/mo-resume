@@ -230,6 +230,13 @@ const toolbar = [
       </div>
     </div>
   </div>
+  <button class="px-7">
+    <nuxt-icon
+      name="add"
+      class="font-medium text-2xl text-center"
+      @click="addWork()"
+    ></nuxt-icon>
+  </button>
 </template>
 <style>
 .arrow .nuxt-icon svg {

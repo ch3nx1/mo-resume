@@ -222,6 +222,13 @@ const onShow = (e: MouseEvent, skill: Education, index: number) => {
       </form-operable>
     </div>
   </div>
+  <button class="px-7">
+    <nuxt-icon
+      name="add"
+      class="font-medium text-2xl text-center"
+      @click="addEdu()"
+    ></nuxt-icon>
+  </button>
 </template>
 <style>
 .arrow .nuxt-icon svg {

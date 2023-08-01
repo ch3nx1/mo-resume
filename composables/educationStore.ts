@@ -35,16 +35,28 @@ export const useEducation = defineStore('education', () => {
       })
     }
   }
-  const addEdu = (i: number) => {
-    educationExperiences.value.splice(i + 1, 0, {
-      school: '',
-      detail: [{ content: '' }],
-      degree: '',
-      start: '',
-      end: '',
-      major: '',
-      show: false
-    })
+  const addEdu = (i?: number) => {
+    if (i === undefined) {
+      educationExperiences.value.push({
+        school: '',
+        detail: [],
+        degree: '',
+        start: '',
+        end: '',
+        major: '',
+        show: false
+      })
+    } else {
+      educationExperiences.value.splice(i + 1, 0, {
+        school: '',
+        detail: [{ content: '' }],
+        degree: '',
+        start: '',
+        end: '',
+        major: '',
+        show: false
+      })
+    }
   }
   const deleteDetail = (i: number, descI: number) => {
     educationExperiences.value[i].detail.splice(descI, 1)
