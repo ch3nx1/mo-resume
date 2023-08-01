@@ -8,7 +8,8 @@ export const useWork = defineStore('workExperiences', () => {
       start: '2023/03/01',
       end: '2024/03/01',
       city: '北京',
-      detail: '',
+      detail:
+        '<h3>项目经验</h3><h4>xxx管理系统</h4><div><ul><li>实现了xxx</li><li>通过xxx，达成了xxx</li><li>优化了xxx，节省里xxx</li></ul></div>',
       show: true
     }
   ])
