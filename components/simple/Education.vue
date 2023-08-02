@@ -7,7 +7,7 @@ const showDialog = ref<boolean>(false)
     class="px-8 overflow-hidden cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
   >
-    <FormTitle :tittle="$t('education')"></FormTitle>
+    <FormTitle :title="$t('education')"></FormTitle>
     <div
       v-for="(education, index) in educationExperiences"
       :key="index"

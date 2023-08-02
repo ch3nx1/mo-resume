@@ -8,7 +8,7 @@ const { skills } = storeToRefs(useUser())
     class="px-8 cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
   >
-    <FormTitle :tittle="$t('skill')"></FormTitle>
+    <FormTitle :title="$t('skill')"></FormTitle>
     <div
       v-for="(skill, index) in skills"
       :key="index"

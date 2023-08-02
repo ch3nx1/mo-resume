@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
-
 const SimpleHeader = shallowRef(resolveComponent('SimpleHeader'))
 const SimpleSkills = shallowRef(resolveComponent('SimpleSkills'))
 const SimpleEducation = shallowRef(resolveComponent('SimpleEducation'))
 const SimpleExperience = shallowRef(resolveComponent('SimpleExperience'))
+const SimpleCustom = shallowRef(resolveComponent('SimpleCustom'))
+
 // ref 不会深度代理shallowRef的对象
 const componentsList = ref<Array<object>>([
   { id: 0, name: SimpleHeader },
@@ -12,8 +13,17 @@ const componentsList = ref<Array<object>>([
   { id: 2, name: SimpleEducation },
   { id: 3, name: SimpleExperience }
 ])
-</script>
 
+const addComponent = () => {
+  componentsList.value.push({
+    id: componentsList.value.length,
+    name: SimpleCustom
+  })
+}
+defineExpose({
+  addComponent
+})
+</script>
 <template>
   <draggable
     :list="componentsList"

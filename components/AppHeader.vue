@@ -13,7 +13,7 @@ async function getLanguagePack(lang: string): Promise<QuasarLanguage> {
   switch (lang) {
     case 'zh-CN':
       return (await import(`quasar/lang/zh-CN.mjs`)).default
-    default: // fallback
+    default:
       return (await import(`quasar/lang/en-US.mjs`)).default
   }
 }
