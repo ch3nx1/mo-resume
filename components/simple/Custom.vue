@@ -40,17 +40,43 @@ const toolbar = [
   ['undo', 'redo'],
   ['viewsource']
 ]
+const showDeleteBtn = ref<boolean>(false)
+defineEmits<{
+  'delete-custom': [id: number]
+}>()
+defineProps<{
+  customKey: number
+}>()
 </script>
 <template>
   <div
-    class="px-8 overflow-hidden cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
+    class="px-8 relative cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
+    @mouseenter="showDeleteBtn = true"
+    @mouseleave="showDeleteBtn = false"
   >
     <FormTitle :title="title"></FormTitle>
     <div class="p-3">
       <div v-html="content"></div>
     </div>
+    <div
+      v-show="showDeleteBtn"
+      class="btn bg-emerald-600 w-[46px] p-0 text-white h-[46px] absolute top-0 z-10 right-[-46px] hover:bg-emerald-700"
+      @click.stop="$emit('delete-custom', customKey)"
+    >
+      <nuxt-icon
+        name="delete"
+        class="text-2xl"
+      ></nuxt-icon>
+      <q-tooltip
+        anchor="bottom middle"
+        self="center middle"
+      >
+        {{ $t('delete') }}
+      </q-tooltip>
+    </div>
   </div>
+
   <pop-dialog v-model="showDialog">
     <template #title>
       <input
