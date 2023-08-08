@@ -3,9 +3,13 @@ import { useUser } from '~/composables/userInfo'
 
 const showDialog = ref<boolean>(false)
 const { userInfo } = storeToRefs(useUser())
+defineProps<{
+  isShow: boolean
+}>()
 </script>
 <template>
   <div
+    v-show="isShow"
     class="bg-emerald-600 text-white p-8 mx--4 cursor-pointer hover:bg-emerald-700 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
   >

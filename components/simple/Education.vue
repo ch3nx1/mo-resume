@@ -1,9 +1,13 @@
 <script setup lang="ts">
 const { educationExperiences } = storeToRefs(useEducation())
 const showDialog = ref<boolean>(false)
+defineProps<{
+  isShow: boolean
+}>()
 </script>
 <template>
   <div
+    v-show="isShow"
     class="px-8 overflow-hidden cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
   >

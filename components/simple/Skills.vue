@@ -1,10 +1,14 @@
 <script lang="ts" setup>
 const showDialog = ref<boolean>(false)
 const { skills } = storeToRefs(useUser())
+defineProps<{
+  isShow: boolean
+}>()
 </script>
 
 <template>
   <div
+    v-show="isShow"
     class="px-8 cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
   >

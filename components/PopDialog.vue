@@ -88,7 +88,7 @@ const close = (e: MouseEvent) => {
     <div
       v-show="modelValue"
       ref="el"
-      class="flex justify-center items-center w-full h-screen fixed top-0 left-0 bg-[rgba(0,0,0,.5)]"
+      class="flex justify-center z-50 items-center w-full h-screen fixed top-0 left-0 bg-[rgba(0,0,0,.5)]"
       @click.stop="close"
     >
       <transition name="content">

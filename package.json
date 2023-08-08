@@ -37,6 +37,7 @@
     "@pinia/nuxt": "^0.4.11",
     "@quasar/extras": "^1.16.5",
     "ioredis": "^5.3.2",
+    "mitt": "^3.0.1",
     "nuxt-icons": "^3.2.1",
     "pinia": "^2.1.4",
     "quasar": "^2.12.3",

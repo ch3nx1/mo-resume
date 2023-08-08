@@ -34,7 +34,13 @@ export default defineI18nConfig(() => ({
       detail: 'Detail',
       work: 'Work Experiences',
       company: 'Company',
-      position: 'Position'
+      position: 'Position',
+      addCustom: 'Add Custom Module',
+      downloadPDF: 'Download PDF',
+      howToUse: 'How To Use',
+      setting: 'Manage Modules',
+      header: 'User Info',
+      custom: 'Custom Module'
     },
     'zh-CN': {
       title: '模-简历',
@@ -68,7 +74,13 @@ export default defineI18nConfig(() => ({
       detail: '描述',
       work: '工作经历',
       company: '公司名称',
-      position: '职位名称'
+      position: '职位名称',
+      addCustom: '添加自定义模块',
+      downloadPDF: '下载PDF',
+      howToUse: '怎样使用',
+      setting: '模块管理',
+      header: '个人信息',
+      custom: '自定义模块'
     }
   }
 }))

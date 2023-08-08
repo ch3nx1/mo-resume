@@ -31,3 +31,9 @@ export interface Work {
   detail: string
   show?: boolean
 }
+export interface DraggableComponent {
+  id: number
+  name: string
+  component: ConcreteComponent
+  show: boolean
+}

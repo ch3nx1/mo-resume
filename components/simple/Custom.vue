@@ -2,7 +2,8 @@
 const showDialog = ref<boolean>(false)
 const content = ref<string>('')
 
-const title = ref<string>('自定义模块')
+const { t } = useI18n()
+const title = ref<string>(t('custom'))
 const titleInput = ref<HTMLInputElement | null>(null)
 const showEditIcon = ref<boolean>(true)
 // 富文本编辑器配置
@@ -41,15 +42,30 @@ const toolbar = [
   ['viewsource']
 ]
 const showDeleteBtn = ref<boolean>(false)
-defineEmits<{
-  'delete-custom': [id: number]
-}>()
-defineProps<{
+const props = defineProps<{
+  isShow: boolean
   customKey: number
 }>()
+const customContent = ref<HTMLElement | null>(null)
+onMounted(() => {
+  customContent.value?.scrollIntoView({ behavior: 'smooth' })
+})
+const { $emits } = useNuxtApp()
+const deleteCustom = () => {
+  $emits('delete-custom', props.customKey)
+}
+const modifyTitle = (e: Event) => {
+  title.value = (e.target as HTMLInputElement).value
+  $emits('modify-title', {
+    id: props.customKey,
+    title: title.value
+  })
+}
 </script>
 <template>
   <div
+    v-show="isShow"
+    ref="customContent"
     class="px-8 relative cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
     @mouseenter="showDeleteBtn = true"
@@ -62,7 +78,7 @@ defineProps<{
     <div
       v-show="showDeleteBtn"
       class="btn bg-emerald-600 w-[46px] p-0 text-white h-[46px] absolute top-0 z-10 right-[-46px] hover:bg-emerald-700"
-      @click.stop="$emit('delete-custom', customKey)"
+      @click.stop="deleteCustom"
     >
       <nuxt-icon
         name="delete"
@@ -81,9 +97,10 @@ defineProps<{
     <template #title>
       <input
         ref="titleInput"
-        v-model="title"
+        :value="title"
         class="text-center"
         type="text"
+        @input="modifyTitle($event)"
         @focus="showEditIcon = false"
         @blur="showEditIcon = true"
       />
