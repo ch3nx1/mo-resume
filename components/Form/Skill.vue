@@ -102,7 +102,7 @@ const onShow = (e: MouseEvent, skill: Skill, index: number) => {
       <nuxt-icon
         name="add"
         class="font-medium text-2xl text-center"
-        @click="addSkill()"
+        @click="addDescription(index, -1)"
       ></nuxt-icon>
     </button>
     <form-operable

@@ -19,7 +19,7 @@ export const useUser = defineStore('userInfo', () => {
         { content: 'nuxt3' },
         { content: 'typescript' }
       ],
-      show: false
+      show: true
     },
     {
       title: '熟练使用Html/Css',
