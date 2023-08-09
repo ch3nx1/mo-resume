@@ -4,9 +4,10 @@ export default defineI18nConfig(() => ({
   messages: {
     'en-US': {
       title: 'Mo-resume',
-      description: 'Create your resume easily',
+      description:
+        'Fill in your information on the template to get your resume',
       getStarted: 'Get Started',
-      slogan: 'Build a professional resume for free',
+      slogan: 'Build your resume with template',
       createResume: 'Create My Resume',
       cancel: 'Cancel',
       save: 'Save',
@@ -44,7 +45,7 @@ export default defineI18nConfig(() => ({
     },
     'zh-CN': {
       title: '模-简历',
-      description: '轻松创建你的简历',
+      description: ' 在模板上填写数据生成简历',
       getStarted: '快速开始',
       slogan: '使用模板轻松创建简历',
       createResume: '创建简历',
