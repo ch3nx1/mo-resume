@@ -12,6 +12,8 @@
   ol{
     @apply list-decimal p-2
   }
+  /* fix html2pdf(html2canvas) texts are shift down */
+  img { display: initial; }
 }
 @layer utilities {
   /* normal-case */

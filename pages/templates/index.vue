@@ -2,7 +2,6 @@
 import { ConcreteComponent } from 'nuxt/dist/app/compat/capi'
 import { Simple } from '~/.nuxt/components'
 import { DraggableComponent } from '~/types/user'
-
 const simpleTemp = resolveComponent('simple')
 const AppHeader = resolveComponent('AppHeader')
 const current = ref<string>('simpleTemp')
@@ -49,7 +48,26 @@ $on('modify-title', (modifyTitle) => {
 })
 
 const exporting = ref<boolean>(false)
-const downloadPDF = () => {}
+const downloadPDF = async () => {
+  exporting.value = true
+  // @ts-expect-error
+  const html2pdf = (await import('html2pdf.js')).default
+  html2pdf()
+    .set({
+      margin: 0,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: {},
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+      pagebreak: {
+        mode: ['avoid-all', 'css', 'legacy']
+      }
+    })
+    .from(document.getElementById('resume-container'))
+    .save('resume')
+  setTimeout(() => {
+    exporting.value = false
+  }, 1000)
+}
 </script>
 
 <template>
