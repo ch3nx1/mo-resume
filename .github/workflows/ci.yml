@@ -4,25 +4,29 @@ on:
   push:
     branches:
       - main
-
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  cd:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@master
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Setup node env
+        uses: actions/setup-node@v2.1.2
+
         with:
-          node-version: 16
+          node-version: ${{ matrix.node }}
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Nuxt 3 Project
-        run: npm run build
+      - name: Install dependencies
+        run: pnpm
+      - name: Generate
+        run: yarn generate
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
