@@ -3,6 +3,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   routeRules: { '/templates': { ssr: false } },
+  nitro: {
+    preset: 'github_pages'
+  },
   modules: [
     '@nuxtjs/i18n',
     'nuxt-icons',

@@ -1,36 +1,51 @@
-name: CI/CD for Nuxt 3
+# https://github.com/actions/deploy-pages#usage
+name: Deploy to GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+
 jobs:
-  cd:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
-
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - run: corepack enable
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2
+          node-version: '18'
+
+      # Pick your own package manager and build script
+      - run: npm install
+      - run: npm run build
+        env:
+          NITRO_PRESET: github_pages
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          version: 8
+          path: ./.output/public
 
-      - name: Install dependencies
-        run: pnpm install
-      - name: Generate
-        run: yarn generate
+  # Deployment job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
 
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github_pages environment
+    environment:
+      name: github_pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./dist
+        id: deployment
+        uses: actions/deploy-pages@v1
