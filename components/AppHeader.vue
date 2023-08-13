@@ -45,6 +45,12 @@ watch(
       </div>
       <div class="flex-none">
         <div class="flex items-center justify-center">
+          <a href="https://github.com/ch3nx1/mo-resume">
+            <nuxt-icon
+              name="github"
+              class="inline-block hover:text-gray-600 text-3xl mr-3 mb-0"
+            ></nuxt-icon>
+          </a>
           <label class="swap btn btn-ghost mr-3 btn-text">
             <input
               v-model="language"
@@ -73,3 +79,8 @@ watch(
     </div>
   </div>
 </template>
+<style>
+a .nuxt-icon svg {
+  margin-bottom: 0;
+}
+</style>
