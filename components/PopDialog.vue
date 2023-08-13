@@ -115,13 +115,10 @@ const close = (e: MouseEvent) => {
           <footer class="flex justify-end p-4">
             <button
               ref="cancelBtn"
-              class="btn btn-ghost mr-3 capitalize"
+              class="btn btn-primary capitalize"
               @click="close"
             >
               {{ $t('cancel') }}
-            </button>
-            <button class="btn btn-primary capitalize">
-              {{ $t('save') }}
             </button>
           </footer>
         </div>

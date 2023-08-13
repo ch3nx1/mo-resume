@@ -15,6 +15,6 @@ export default {
   },
   plugins: [DaisyUi],
   daisyui: {
-    themes: ['cmyk', 'night', 'wireframe']
+    themes: ['cmyk']
   }
 }

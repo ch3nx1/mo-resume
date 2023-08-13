@@ -71,85 +71,87 @@ const downloadPDF = async () => {
 </script>
 
 <template>
-  <div
-    id="resume-container"
-    class="mx-auto w-[800px] pb-16 bg-white card card-compact shadow-md rounded-sm"
-  >
-    <component
-      :is="componentsName[current]"
-      ref="template"
-      :module-list="moduleList"
-    />
-  </div>
-  <div
-    class="fixed top-0 right-0 bottom-0 w-[10vw] min-w-[280px] max-w-[480px] flex flex-col"
-  >
-    <q-list class="h-full">
-      <q-item
-        clickable
-        class="bg-white shadow-md rounded-md m-1"
-        @click="downloadPDF"
-      >
-        <QInnerLoading :showing="exporting">
-          <QSpinnerPie color="primary" />
-        </QInnerLoading>
-        <q-item-section avatar>
-          <nuxt-icon
-            name="pdf"
-            class="text-3xl"
-          ></nuxt-icon>
-        </q-item-section>
-        <q-item-section>
-          {{ $t('downloadPDF') }}
-        </q-item-section>
-      </q-item>
-      <QExpansionItem
-        default-opened
-        class="bg-white shadow-md rounded-md m-1"
-      >
-        <template #header>
-          <QItemSection avatar>
+  <div class="bg-slate-100 h-full">
+    <div
+      id="resume-container"
+      class="mx-auto w-[800px] pb-16 bg-white card card-compact shadow-md rounded-sm"
+    >
+      <component
+        :is="componentsName[current]"
+        ref="template"
+        :module-list="moduleList"
+      />
+    </div>
+    <div
+      class="fixed top-0 right-0 bottom-0 w-[10vw] min-w-[280px] max-w-[480px] flex flex-col"
+    >
+      <q-list class="h-full">
+        <q-item
+          clickable
+          class="bg-white shadow-md rounded-md m-1"
+          @click="downloadPDF"
+        >
+          <QInnerLoading :showing="exporting">
+            <QSpinnerPie color="primary" />
+          </QInnerLoading>
+          <q-item-section avatar>
             <nuxt-icon
-              name="setting"
+              name="pdf"
               class="text-3xl"
             ></nuxt-icon>
-          </QItemSection>
-          <QItemSection>
-            {{ $t('setting') }}
-          </QItemSection>
-        </template>
-        <QList>
-          <q-item
-            v-for="item in moduleList"
-            :key="item.id"
-            v-ripple
-            tag="label"
-          >
-            <q-item-section>
-              <q-item-label>{{ $t(item.name) }}</q-item-label>
-            </q-item-section>
-            <q-item-section avatar>
-              <q-toggle v-model="item.show" />
-            </q-item-section>
-          </q-item>
-          <q-item
-            v-ripple
-            clickable
-            @click="addComponent"
-          >
-            <q-item-section>
-              {{ $t('addCustom') }}
-            </q-item-section>
-            <q-item-section avatar>
+          </q-item-section>
+          <q-item-section>
+            {{ $t('downloadPDF') }}
+          </q-item-section>
+        </q-item>
+        <QExpansionItem
+          default-opened
+          class="bg-white shadow-md rounded-md m-1"
+        >
+          <template #header>
+            <QItemSection avatar>
               <nuxt-icon
-                name="add"
+                name="setting"
                 class="text-3xl"
               ></nuxt-icon>
-            </q-item-section>
-          </q-item>
-        </QList>
-      </QExpansionItem>
-    </q-list>
+            </QItemSection>
+            <QItemSection>
+              {{ $t('setting') }}
+            </QItemSection>
+          </template>
+          <QList>
+            <q-item
+              v-for="item in moduleList"
+              :key="item.id"
+              v-ripple
+              tag="label"
+            >
+              <q-item-section>
+                <q-item-label>{{ $t(item.name) }}</q-item-label>
+              </q-item-section>
+              <q-item-section avatar>
+                <q-toggle v-model="item.show" />
+              </q-item-section>
+            </q-item>
+            <q-item
+              v-ripple
+              clickable
+              @click="addComponent"
+            >
+              <q-item-section>
+                {{ $t('addCustom') }}
+              </q-item-section>
+              <q-item-section avatar>
+                <nuxt-icon
+                  name="add"
+                  class="text-3xl"
+                ></nuxt-icon>
+              </q-item-section>
+            </q-item>
+          </QList>
+        </QExpansionItem>
+      </q-list>
+    </div>
   </div>
 </template>
 <style>

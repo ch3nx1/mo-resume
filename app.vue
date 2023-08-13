@@ -5,7 +5,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="bg-slate-100 h-full">
+  <div>
     <NuxtPage />
   </div>
 </template>
