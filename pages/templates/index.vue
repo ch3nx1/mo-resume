@@ -17,24 +17,51 @@ const SimpleCustom = shallowRef(resolveComponent('SimpleCustom'))
 // ref 不会深度代理shallowRef的对象
 const moduleList = ref<Array<DraggableComponent>>([
   { id: 0, component: SimpleHeader, show: true, name: 'header' },
-  { id: 1, component: SimpleSkills, show: true, name: 'skill' },
-  { id: 2, component: SimpleEducation, show: true, name: 'education' },
+  { id: 1, component: SimpleEducation, show: true, name: 'education' },
+  { id: 2, component: SimpleSkills, show: true, name: 'skill' },
   { id: 3, component: SimpleExperience, show: true, name: 'work' }
 ])
+const customComponentIdList = useLocalStorage('customComponentIdList', {
+  customId: []
+})
+onBeforeMount(() => {
+  const customComponentCount = customComponentIdList.value.customId.length
 
+  if (customComponentCount) {
+    customComponentIdList.value.customId.forEach((item) => {
+      moduleList.value.push({
+        id: item,
+        component: SimpleCustom,
+        show: true,
+        name:
+          // @ts-ignore
+          JSON.parse(localStorage.getItem(item.toString()))?.title || 'custom'
+      })
+    })
+  }
+})
+let customId = +(Math.random() * 100000000).toFixed()
 const addComponent = () => {
   moduleList.value.push({
-    id: moduleList.value.length,
+    id: customId,
     component: SimpleCustom,
     show: true,
     name: 'custom'
   })
+  // @ts-expect-error
+  customComponentIdList.value.customId.push(customId)
+  customId += 1
 }
 const { $on } = useNuxtApp()
 $on('delete-custom', (id: number) => {
   moduleList.value.forEach((item, index) => {
     if (item.id === id) {
       moduleList.value.splice(index, 1)
+    }
+  })
+  customComponentIdList.value.customId.forEach((item, index) => {
+    if (item === id) {
+      customComponentIdList.value.customId.splice(index, 1)
     }
   })
 })

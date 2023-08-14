@@ -33,7 +33,7 @@ defineProps<{
           <span>{{ education.start }}</span> - <span>{{ education.end }}</span>
         </div>
       </div>
-      <div class="p-3">
+      <div class="pt-3">
         <ul class="list-decimal px-6">
           <li
             v-for="(item, i) in education.detail"

@@ -18,7 +18,7 @@ defineProps<{
       :key="index"
       class="my-5"
     >
-      <h3 class="my-1">{{ skill.title }}</h3>
+      <h3 class="my-1 font-bold">{{ skill.title }}</h3>
       <ul class="px-4">
         <li
           v-for="item in skill.description"

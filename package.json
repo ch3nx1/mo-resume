@@ -37,6 +37,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "@quasar/extras": "^1.16.5",
+    "@vueuse/nuxt": "^10.3.0",
     "html2pdf.js": "^0.10.1",
     "mitt": "^3.0.1",
     "nuxt-icons": "^3.2.1",

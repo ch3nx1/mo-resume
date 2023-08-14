@@ -1,11 +1,29 @@
 <script setup lang="ts">
-const showDialog = ref<boolean>(false)
-const content = ref<string>('')
-
+const props = defineProps<{
+  isShow: boolean
+  customKey: number
+}>()
 const { t } = useI18n()
-const title = ref<string>(t('custom'))
+
+// interface CustomData {
+//   title: string
+//   content: string
+// }
+const customData = useLocalStorage(props.customKey.toString(), {
+  title: t('custom'),
+  content: ''
+})
+
+const showDialog = ref<boolean>(false)
+// const content = toRef(customData.value, 'content')
+
+// const title = toRef(customData.value, 'title')
 const titleInput = ref<HTMLInputElement | null>(null)
 const showEditIcon = ref<boolean>(true)
+
+// const modifyContent = (value: string) => {
+//   content.value = value
+// }
 // 富文本编辑器配置
 const $q = useQuasar()
 const toolbar = [
@@ -42,10 +60,7 @@ const toolbar = [
   ['viewsource']
 ]
 const showDeleteBtn = ref<boolean>(false)
-const props = defineProps<{
-  isShow: boolean
-  customKey: number
-}>()
+
 const customContent = ref<HTMLElement | null>(null)
 onMounted(() => {
   customContent.value?.scrollIntoView({ behavior: 'smooth' })
@@ -53,12 +68,14 @@ onMounted(() => {
 const { $emits } = useNuxtApp()
 const deleteCustom = () => {
   $emits('delete-custom', props.customKey)
+  // delete data from localStorage
+  customData.value = null
 }
 const modifyTitle = (e: Event) => {
-  title.value = (e.target as HTMLInputElement).value
+  customData.value.title = (e.target as HTMLInputElement).value
   $emits('modify-title', {
     id: props.customKey,
-    title: title.value
+    title: customData.value.title
   })
 }
 </script>
@@ -71,9 +88,9 @@ const modifyTitle = (e: Event) => {
     @mouseenter="showDeleteBtn = true"
     @mouseleave="showDeleteBtn = false"
   >
-    <FormTitle :title="title"></FormTitle>
+    <FormTitle :title="customData.title"></FormTitle>
     <div class="p-3">
-      <div v-html="content"></div>
+      <div v-html="customData.content"></div>
     </div>
     <div
       v-show="showDeleteBtn"
@@ -97,7 +114,7 @@ const modifyTitle = (e: Event) => {
     <template #title>
       <input
         ref="titleInput"
-        :value="title"
+        :value="customData.title"
         class="text-center"
         type="text"
         @input="modifyTitle($event)"
@@ -107,14 +124,14 @@ const modifyTitle = (e: Event) => {
       <nuxt-icon
         v-show="showEditIcon"
         name="edit"
-        class="absolute left-[435px] top-[17px] cursor-pointer"
+        class="absolute left-2/3 top-1/4 text-lg cursor-pointer"
         @click="titleInput?.focus()"
       />
     </template>
     <template #default>
       <div class="q-pa-md q-gutter-sm">
         <q-editor
-          v-model="content"
+          v-model="customData.content"
           :dense="$q.screen.lt.md"
           :toolbar="toolbar"
         />

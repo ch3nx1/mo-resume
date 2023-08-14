@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { QuasarLanguage } from 'quasar'
-
+// set I18n in Quasar:https://github.com/Maiquu/nuxt-quasar/issues/69#issuecomment-1649392329
 const { locale } = useI18n()
 const { lang } = useQuasar()
 
