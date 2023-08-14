@@ -109,7 +109,7 @@ const close = (e: MouseEvent) => {
               >X</span
             >
           </header>
-          <div class="dialog-body">
+          <div class="dialog-body overflow-scroll">
             <slot></slot>
           </div>
           <footer class="flex justify-end p-4">

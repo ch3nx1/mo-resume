@@ -11,7 +11,7 @@ export const useEducation = defineStore(
         start: '2020/09/01',
         end: '2024/06/30',
         detail: [{ content: '获得了XXX' }, { content: '参与了XXX' }],
-        show: true
+        show: false
       },
       {
         school: 'XX大学',

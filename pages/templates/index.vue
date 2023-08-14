@@ -84,10 +84,10 @@ const downloadPDF = async () => {
       margin: 0,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: {},
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
-      pagebreak: {
-        mode: ['avoid-all', 'css', 'legacy']
-      }
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      // pagebreak: {
+      //   mode: ['avoid-all', 'css', 'legacy']
+      // }
     })
     .from(document.getElementById('resume-container'))
     .save('resume')
