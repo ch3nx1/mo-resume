@@ -41,7 +41,8 @@ export default defineI18nConfig(() => ({
       howToUse: 'How To Use',
       setting: 'Manage Modules',
       header: 'User Info',
-      custom: 'Custom Module'
+      custom: 'Custom Module',
+      reset: 'Reset'
     },
     'zh-CN': {
       title: '模-简历',
@@ -81,7 +82,8 @@ export default defineI18nConfig(() => ({
       howToUse: '怎样使用',
       setting: '模块管理',
       header: '个人信息',
-      custom: '自定义模块'
+      custom: '自定义模块',
+      reset: '重置数据'
     }
   }
 }))

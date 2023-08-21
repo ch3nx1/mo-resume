@@ -95,6 +95,10 @@ const downloadPDF = async () => {
     exporting.value = false
   }, 1000)
 }
+const resetData = () => {
+  localStorage.clear()
+  location.reload()
+}
 </script>
 
 <template>
@@ -129,6 +133,21 @@ const downloadPDF = async () => {
           </q-item-section>
           <q-item-section>
             {{ $t('downloadPDF') }}
+          </q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          class="bg-white shadow-md rounded-md m-1"
+          @click="resetData"
+        >
+          <q-item-section avatar>
+            <nuxt-icon
+              name="reset"
+              class="text-3xl"
+            ></nuxt-icon>
+          </q-item-section>
+          <q-item-section>
+            {{ $t('reset') }}
           </q-item-section>
         </q-item>
         <QExpansionItem
