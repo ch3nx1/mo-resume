@@ -83,7 +83,7 @@ const modifyTitle = (e: Event) => {
   <div
     v-show="isShow"
     ref="customContent"
-    class="px-8 relative cursor-pointer hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
+    class="px-8 relative cursor-move hover:bg-slate-200 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
     @mouseenter="showDeleteBtn = true"
     @mouseleave="showDeleteBtn = false"

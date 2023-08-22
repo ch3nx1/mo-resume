@@ -42,7 +42,9 @@ export default defineI18nConfig(() => ({
       setting: 'Manage Modules',
       header: 'User Info',
       custom: 'Custom Module',
-      reset: 'Reset'
+      reset: 'Reset',
+      addAvatar: 'Add Avatar',
+      showAvatar: 'Show Avatar'
     },
     'zh-CN': {
       title: '模-简历',
@@ -83,7 +85,9 @@ export default defineI18nConfig(() => ({
       setting: '模块管理',
       header: '个人信息',
       custom: '自定义模块',
-      reset: '重置数据'
+      reset: '重置数据',
+      addAvatar: '添加头像',
+      showAvatar: '显示头像'
     }
   }
 }))

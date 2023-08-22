@@ -8,6 +8,7 @@ interface ModifyTitle {
 type ApplicationEvents = {
   'delete-custom': number
   'modify-title': ModifyTitle
+  'is-avatar': void
 }
 
 export default defineNuxtPlugin(() => {

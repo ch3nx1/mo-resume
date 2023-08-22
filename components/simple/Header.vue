@@ -6,19 +6,44 @@ const { userInfo } = storeToRefs(useUser())
 defineProps<{
   isShow: boolean
 }>()
+const isAvatar = inject('isAvatar')
+const imgSrc: Ref | undefined = inject('imgSrc') || undefined
+// onBeforeMount(() => {
+//   if (imgSrc.value) {
+//     isAvatar.value = true
+//   } else {
+//     isAvatar.value = false
+//   }
+// })
 </script>
 <template>
   <div
     v-show="isShow"
-    class="bg-emerald-600 text-white p-8 mx--4 cursor-pointer hover:bg-emerald-700 hover:border-dashed hover:border hover:border-blue-400"
+    class="bg-emerald-600 text-white p-8 mx--4 cursor-move hover:bg-emerald-700 hover:border-dashed hover:border hover:border-blue-400"
     @click="showDialog = true"
   >
     <div
       class="flex justify-between pb-4 px-2 border-b-[0.5px]"
       style="border-color: rgba(65, 125, 94, 0.9)"
     >
-      <div class="text-4xl leading-8">{{ userInfo.name }}</div>
-      <div class="text-2xl leading-8">{{ userInfo.jobIntention }}</div>
+      <div class="flex flex-nowrap items-center">
+        <q-avatar
+          v-show="isAvatar"
+          size="77px"
+          font-size="16px"
+          class="mr-3"
+        >
+          <img
+            :src="imgSrc"
+            alt="请上传"
+        /></q-avatar>
+        <div class="text-4xl leading-8">
+          {{ userInfo.name }}
+        </div>
+      </div>
+      <div class="text-2xl leading-8 flex items-center">
+        {{ userInfo.jobIntention }}
+      </div>
     </div>
     <div class="pt-4">
       <div class="flex justify-between">

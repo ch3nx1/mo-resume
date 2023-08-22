@@ -99,6 +99,33 @@ const resetData = () => {
   localStorage.clear()
   location.reload()
 }
+
+function reader(file: File) {
+  const reader = new FileReader()
+  return new Promise((resolve, reject) => {
+    reader.onload = function () {
+      resolve(reader.result)
+    }
+    reader.onerror = reject
+    reader.readAsDataURL(file)
+  })
+}
+const imgSrc = useLocalStorage('base64Img', '')
+const uploadAvatar = async (e: Event) => {
+  const { files } = e.target as HTMLInputElement
+  const content: string = (await reader(files![0])) as string
+  imgSrc.value = content
+}
+const isAvatar = ref<boolean>()
+watchEffect(() => {
+  if (imgSrc?.value) {
+    isAvatar.value = true
+  } else {
+    isAvatar.value = false
+  }
+})
+provide('imgSrc', imgSrc)
+provide('isAvatar', isAvatar)
 </script>
 
 <template>
@@ -148,6 +175,34 @@ const resetData = () => {
           </q-item-section>
           <q-item-section>
             {{ $t('reset') }}
+          </q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          class="bg-white shadow-md rounded-md m-1 relative"
+        >
+          <input
+            type="file"
+            class="absolute cursor-pointer h-full top-0 left-0 opacity-0"
+            accept=".png, .jpg, .jpeg"
+            @change="uploadAvatar"
+          />
+          <q-item-section avatar>
+            <nuxt-icon
+              name="avatar"
+              class="text-3xl"
+            ></nuxt-icon>
+          </q-item-section>
+          <q-item-section>
+            {{ $t('addAvatar') }}
+          </q-item-section>
+        </q-item>
+        <q-item class="bg-white shadow-md rounded-md m-1 relative">
+          <q-item-section>
+            <q-item-label>{{ $t('showAvatar') }}</q-item-label>
+          </q-item-section>
+          <q-item-section avatar>
+            <q-toggle v-model="isAvatar" />
           </q-item-section>
         </q-item>
         <QExpansionItem
